@@ -5,46 +5,47 @@
 }
 
 body{
-    font-family: Arial, sans-serif;
+    /* Mengganti font bawaan menjadi Quicksand yang lebih modern & lembut */
+    font-family: 'Quicksand', sans-serif;
     min-height:100vh;
-    background: linear-gradient(
-        135deg,
-        #ffe0e9,
-        #fff5f7
-    );
-
+    background: linear-gradient(135deg, #ffe0e9, #fff5f7);
     display:flex;
     justify-content:center;
     align-items:center;
     padding:20px;
+    overflow-x: hidden;
 }
 
 .screen{
     width:100%;
     max-width:500px;
+    z-index: 10; /* Agar di atas efek love */
 }
 
 .card{
-    background:white;
+    background:rgba(255, 255, 255, 0.95);
     border-radius:24px;
     padding:32px;
     text-align:center;
-    box-shadow:0 15px 40px rgba(0,0,0,.08);
+    box-shadow:0 15px 40px rgba(255, 95, 143, 0.15);
 }
 
 .heart{
     font-size:48px;
     margin-bottom:20px;
+    display: inline-block;
 }
 
 h1{
     margin-bottom:15px;
     color:#333;
+    font-weight: 700;
 }
 
 .subtitle{
     color:#666;
     margin-bottom:20px;
+    font-size: 16px;
 }
 
 .clue{
@@ -53,15 +54,19 @@ h1{
     border-radius:12px;
     margin-bottom:20px;
     line-height:1.6;
+    color: #ff5f8f;
+    font-weight: 600;
 }
 
 input{
     width:100%;
     padding:14px;
-    border:1px solid #ddd;
+    border:2px solid #fee2e9;
     border-radius:12px;
     margin-bottom:15px;
     font-size:16px;
+    transition: all 0.3s ease;
+    font-family: 'Quicksand', sans-serif;
 }
 
 button{
@@ -72,46 +77,45 @@ button{
     cursor:pointer;
     font-size:16px;
     font-weight:bold;
+    font-family: 'Quicksand', sans-serif;
+    transition: transform 0.2s, opacity 0.2s;
 }
 
 button:hover{
     opacity:.9;
-}
-
-#submit-btn{
-    background:#ff5f8f;
-    color:white;
-}
-
-#error-message{
-    color:red;
-    margin-top:15px;
-    min-height:20px;
+    transform: translateY(-2px);
 }
 
 .otp-container{
     display:flex;
     justify-content:center;
-    gap:10px;
+    gap: 5px; /* Jaraknya kita perkecil sedikit biar muat di HP kecil */
     margin-bottom:20px;
+    width: 100%;
 }
 
 .otp-input{
-    width:48px;
-    height:56px;
+    flex: 1; /* Ini kunci rahasianya! Kotak akan otomatis membagi rata ruang yang ada */
+    max-width: 45px; /* Jangan terlalu besar kalau dibuka di tablet/laptop */
+    height: 50px;
     text-align:center;
-    font-size:22px;
-    border:1px solid #ddd;
-    border-radius:12px;
+    font-size: 18px; /* Font sedikit disesuaikan agar tidak mentok */
+    font-weight: bold;
+    border:2px solid #fee2e9;
+    border-radius: 8px; /* Lengkungannya dikecilkan sedikit supaya proporsional */
     outline:none;
+    color: #ff5f8f;
+    padding: 0; /* Sangat penting: menghilangkan padding bawaan HP yang bikin kotak melar */
 }
 
+/* Supaya saat kotaknya ditekan (focus), efeknya tetap rapi */
 .otp-input:focus{
     border-color:#ff5f8f;
+    box-shadow: 0 0 8px rgba(255, 95, 143, 0.2);
 }
 
 .hidden{
-    display:none;
+    display:none !important;
 }
 
 .choice-buttons{
@@ -121,30 +125,35 @@ button:hover{
     justify-content:center;
 }
 
-#yes-btn{
-    background:#ff5f8f;
+#yes-btn, #open-memory-btn, #next-story-btn {
+    background: linear-gradient(135deg, #ff5f8f, #ff8fa3);
     color:white;
+    box-shadow: 0 4px 15px rgba(255, 95, 143, 0.3);
 }
 
 #no-btn{
     background:#f1f1f1;
+    color: #666;
 }
 
 #no-message{
     margin-top:20px;
     min-height:24px;
-    color:#666;
+    color:#ff5f8f;
+    font-weight: 600;
 }
 
 .story-image{
     width:100%;
     border-radius:16px;
     margin-bottom:20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .story-date{
-    color:#888;
+    color:#ff5f8f;
     margin-bottom:20px;
+    font-weight: 600;
 }
 
 .story-text{
@@ -152,4 +161,71 @@ button:hover{
     line-height:1.8;
     white-space:pre-line;
     margin:20px 0;
+    color: #444;
+    font-size: 16px;
+}
+
+/* Font Spesial untuk Surat Cinta */
+.handwritten {
+    font-family: 'Caveat', cursive;
+    font-size: 36px;
+    color: #ff5f8f;
+    margin-bottom: 10px;
+}
+
+/* ANIMASI */
+.fade-in {
+    animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.pulse {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+.bounce {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-15px); }
+    60% { transform: translateY(-7px); }
+}
+
+/* Efek Love Melayang */
+.floating-heart {
+    position: fixed;
+    bottom: -10vh;
+    font-size: 24px;
+    z-index: 1;
+    opacity: 0;
+    animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(0.8); opacity: 0; }
+    20% { opacity: 0.6; }
+    80% { opacity: 0.6; }
+    100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+}
+
+/* ANIMASI TRANSISI KONTEN (CHAPTER) */
+.content-transition {
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.content-hidden {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
 }
