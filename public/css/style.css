@@ -135,3 +135,21 @@ button:hover{
     min-height:24px;
     color:#666;
 }
+
+.story-image{
+    width:100%;
+    border-radius:16px;
+    margin-bottom:20px;
+}
+
+.story-date{
+    color:#888;
+    margin-bottom:20px;
+}
+
+.story-text{
+    text-align:left;
+    line-height:1.8;
+    white-space:pre-line;
+    margin:20px 0;
+}
