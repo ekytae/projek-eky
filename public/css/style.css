@@ -88,3 +88,50 @@ button:hover{
     margin-top:15px;
     min-height:20px;
 }
+
+.otp-container{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.otp-input{
+    width:48px;
+    height:56px;
+    text-align:center;
+    font-size:22px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    outline:none;
+}
+
+.otp-input:focus{
+    border-color:#ff5f8f;
+}
+
+.hidden{
+    display:none;
+}
+
+.choice-buttons{
+    margin-top:20px;
+    display:flex;
+    gap:10px;
+    justify-content:center;
+}
+
+#yes-btn{
+    background:#ff5f8f;
+    color:white;
+}
+
+#no-btn{
+    background:#f1f1f1;
+}
+
+#no-message{
+    margin-top:20px;
+    min-height:24px;
+    color:#666;
+}
