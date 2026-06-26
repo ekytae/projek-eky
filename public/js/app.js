@@ -47,7 +47,7 @@ const stories = [
         title: 'Ketika Kita Mulai Lagi Dari Awal',
         date: '12 Maret 2023',
         icon: '💒',
-        images: ['/images/nikah1.jpg', '/images/nikah2.jpg', '/images/nikah3.jpg', '/images/nikah4.jpg'],
+        images: ['/images/nikah1.jpg', '/images/nikah2.jpg', '/images/nikah3.jpg'],
         text: `Sebulan dari lamaran, akhirnya hari yang kita tunggu-tunggu dateng. Hari di mana semua yang kita laluin selama 5 tahun ke belakang kita mulai lagi dari awal.\n\nDari yang sebelumnya cuma pacaran, akhirnya kita mutusin buat nikah. Hidup bareng, tinggal bareng, tidur bareng, pokoknya semuanya bareng-bareng.\n\nMaaf ya kalau aku masih belum bisa sesempurna yang kamu pengen, tapi aku bersyukur banget kamu masih mau nerima aku sampai detik ini. Pokoknya di tanggal ini hidup aku bener-bener berubah drastis. Jadi suami kamu, dan punya tanggung jawab yang jauh lebih besar. Makasih ya sayang.`
     },
     {
@@ -68,14 +68,14 @@ const stories = [
         title: 'Sagara Garvi Sinatra',
         date: '13 Januari 2024',
         icon: '👼',
-        images: ['/images/sagara1.jpg'],
+        images: ['/images/sagara1.jpg', '/images/sagara2.jpg'], 
         text: `"Ibu, Dd takut..." ngomong gitu sambil nangis di motor wkwkw.\n\nSiapa yang sangka dokter cantik tiba-tiba bilang kalau besok paginya jam 6 harus langsung operasi SC. Belum ada persiapan apa-apa dan jujur aja kondisi keuangan aku lagi jelek banget waktu itu. Tapi alhamdulillah, kita bisa berjuang bareng dan ngelewatin itu semua sampai hari ini.`
     },
     {
         title: 'Roller Coaster',
         date: '',
         icon: '🎢',
-        images: ['/images/roller1.jpg', '/images/roller2.jpg', '/images/roller3.jpg'], 
+        images: ['/images/roller1.jpg', '/images/roller2.jpg', '/images/roller3.jpg','/images/roller4.jpg'], 
         text: `Kita bener-bener ngerasain yang namanya naik dan turun. Punya duit banyak, sampai kehabisan duit, pusing bareng-bareng.\n\nDi sini aku cuma mau bilang: makasih banyak udah selalu mau nemenin aku ya, sayang. Kamu nggak pernah nyerah nemenin aku dari 0, naik ke 1 juta, terus balik lagi ke minus, sampai sekarang kita pelan-pelan naikin semuanya lagi berdua.`
     }
 ];

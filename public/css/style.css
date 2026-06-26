@@ -260,87 +260,48 @@ button:hover{
     animation: bounce 2s infinite;
 }
 
-/* --- UPDATE SCROLL ALA TIKTOK / REELS --- */
+/* --- KEMBALI KE SCROLL NATURAL (ALA UNDANGAN DIGITAL) --- */
 #story-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    padding: 0;
-    margin: 0;
-    max-width: 100%;
-    background: linear-gradient(135deg, #ffe0e9, #fff5f7);
-    z-index: 20;
+    width: 100%;
+    /* Menghapus position: fixed agar bisa di-scroll normal bersama seluruh halaman */
+    background: transparent; 
 }
 
 #story-content {
-    background: transparent;
-    box-shadow: none;
-    padding: 0;
-    height: 100%;
     width: 100%;
+    padding: 20px 0 60px 0;
 }
 
 .chapter-container {
-    height: 100vh;
-    width: 100vw;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory; /* Kunci rahasianya: ini bikin scroll-nya otomatis nge-snap! */
-    scroll-behavior: smooth;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px; /* Jarak antar chapter */
 }
 
 .chapter-wrapper {
-    height: 100vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    scroll-snap-align: center; /* Akan otomatis 'nyangkut' pas di tengah layar */
-    padding: 20px;
+    padding: 0 20px; /* Memberi jarak aman dari pinggir layar HP */
 }
 
 .chapter-card {
     width: 100%;
     max-width: 450px;
-    margin: 0; /* Menghilangkan margin agar posisinya pas di tengah */
+    /* Hapus margin agar rapi di tengah */
+    margin: 0; 
 }
 
-/* --- GALERI GAMBAR & TIMER --- */
-.image-gallery {
-    display: flex;
-    overflow-x: auto;
-    gap: 15px;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-    scroll-snap-type: x mandatory;
+/* Animasi Muncul dari Bawah (Reveal) */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
 }
 
-.image-gallery::-webkit-scrollbar {
-    height: 6px;
-}
-
-.image-gallery::-webkit-scrollbar-thumb {
-    background: #ffb6c1;
-    border-radius: 10px;
-}
-
-.gallery-img {
-    flex: 0 0 85%;
-    max-height: 250px;
-    object-fit: cover;
-    border-radius: 12px;
-    scroll-snap-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.timer-box {
-    background: #fff3f7;
-    padding: 15px;
-    border-radius: 12px;
-    margin: 15px 0;
-    color: #ff5f8f;
-    font-size: 18px;
-    font-weight: bold;
-    border: 2px dashed #ffb6c1;
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }
