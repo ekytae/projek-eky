@@ -14,36 +14,69 @@ const inputs = document.querySelectorAll('.otp-input');
 const storyContent = document.getElementById('story-content');
 const bgMusic = document.getElementById('bg-music');
 
-/* STATE */
 let attempt = 0;
 let noClickCount = 0;
-let currentStory = 0;
 
-/* STORIES */
+/* |--------------------------------------------------------------------------
+| STORIES DATA (SUDAH DIROMBAK)
+|--------------------------------------------------------------------------
+*/
 const stories = [
     {
-        title: 'Awal Dari Sebuah "P"',
+        title: '"P"',
         date: '14 April 2018',
-        image: '/images/bab1.jpg',
-        text: `Kalau dipikir-pikir lucu juga ya.\n\nSemua ini berawal dari satu huruf.\n\n"P"\n\nDan besoknya kita langsung ketemuan.\n\nAku masih inget banget kalimat pertama yang aku terima waktu itu.\n\n"Udah di Willa Asri nih."\n\nSiapa sangka dari pesan sesederhana itu, perjalanan panjang ini akhirnya dimulai.`
+        icon: '📱',
+        images: [], // Dikosongkan karena belum ada gambar
+        text: `Inget ga dulu aku pertama kali chat cuma "P", "Ini dinda ya?" doang? Itu juga tengah malem pas kamu lagi main.\n\nKalau sekarang diinget tuh lucu aja, cuma dari huruf P doang akhirnya bisa kenalan, dan bertahan sampai hari ini. Coba bayangin kalau dulu aku nggak berani chat kamu, atau kamu males bales chat aku, udah jadi apa kita sekarang wkwk.`
     },
     {
-        title: 'Pacaran Dalam Dua Hari',
-        date: '16 April 2018',
-        image: '/images/bab2.jpg',
-        text: `Sampai sekarang kalau diingat rasanya masih lucu.\n\nBaru dua hari kenal.\n\nTapi entah kenapa aku udah ngerasa nyaman.\n\nSaking nggak sabarnya, aku sampai pura-pura nanya:\n\n"Terakhir pacaran kapan?"\n\nPadahal niat aslinya cuma satu.\n\nAku pengen ngajak kamu pacaran.\n\nDan ajaibnya...\n\nkamu mau ❤️`
+        title: '16 April 2018',
+        date: '', // Dikosongkan sesuai permintaan
+        icon: '👩‍❤️‍👨',
+        images: [], 
+        text: `Nah, ini bagian yang paling lucu. Baru dua hari kenal, bisa-bisanya aku bilang nyaman wkwk. Udah gitu ditantangin lagi, berani apa nggak ngomong langsung.\n\nWalaupun aslinya aku cuma basa-basi nanya "kapan terakhir pacaran" hahaha. Kamu bayangin deh, gimana kalau dulu aku nggak berani dateng, pasti aku udah luntang-lantung sampai sekarang.`
     },
     {
-        title: 'Aku Datang Untuk Melamar',
+        title: 'Akhirnya Dilamar',
         date: '11 Februari 2023',
-        image: '/images/bab3.jpg',
-        text: `Perjalanan kita nggak selalu mudah.\n\nBanyak naik turun yang kita lewati.\n\nTapi hari itu...\n\naku memberanikan diri.\n\nBerdiri di depan banyak orang.\n\nDi depan keluarga.\n\nDan dengan malu-malu memanggil...\n\n"Dd..."\n\n🤣❤️`
+        icon: '💍',
+        images: ['/images/lamaran1.jpg', '/images/lamaran2.jpg'], // Ganti nama file sesuai punyamu
+        text: `Dd.... wkwkwkwk sumpah masih malu sendiri kalau nonton videonya lagi.\n\nTanggal 11 Februari itu, walaupun kelihatannya kayak cuma formalitas, tapi aku sendiri masih agak heran kok bisa berani ngelamar kamu di depan orang banyak. Ada MC-nya pula. Mana kamu cantik banget lagi hari itu.`
     },
     {
-        title: 'Kita Memulai Lagi',
+        title: 'Ketika Kita Mulai Lagi Dari Awal',
         date: '12 Maret 2023',
-        image: '/images/bab4.jpg',
-        text: `Ini bukan akhir.\n\nJustru awal yang baru.\n\nHari dimana semuanya kita ulang lagi dari awal.\n\nYang tadinya cuma pacar.\n\nSekarang menjadi suami dan istri.\n\nAku tahu aku belum sempurna.\n\nAku tahu kadang aku masih bikin kamu sedih.\n\nTapi aku juga tahu...\n\nkamu selalu mendoakan aku.\n\nDan tetap sabar sampai hari ini.\n\nTerima kasih ❤️`
+        icon: '💒',
+        images: ['/images/nikah1.jpg', '/images/nikah2.jpg', '/images/nikah3.jpg', '/images/nikah4.jpg'],
+        text: `Sebulan dari lamaran, akhirnya hari yang kita tunggu-tunggu dateng. Hari di mana semua yang kita laluin selama 5 tahun ke belakang kita mulai lagi dari awal.\n\nDari yang sebelumnya cuma pacaran, akhirnya kita mutusin buat nikah. Hidup bareng, tinggal bareng, tidur bareng, pokoknya semuanya bareng-bareng.\n\nMaaf ya kalau aku masih belum bisa sesempurna yang kamu pengen, tapi aku bersyukur banget kamu masih mau nerima aku sampai detik ini. Pokoknya di tanggal ini hidup aku bener-bener berubah drastis. Jadi suami kamu, dan punya tanggung jawab yang jauh lebih besar. Makasih ya sayang.`
+    },
+    {
+        title: '2 Garis',
+        date: '15 Mei 2023',
+        icon: '🍼',
+        images: ['/images/testpack1.jpg', '/images/testpack2.jpg'],
+        text: `Nggak disangka-sangka, baru nikah 2 bulan tiba-tiba ada dua garis dan hasilnya positif!\n\nCuma mau bilang: tokcer banget pokoknya wkwkwk.`
+    },
+    {
+        title: 'Makin Deket',
+        date: '',
+        icon: '🤰',
+        images: ['/images/hamil1.jpg', '/images/hamil2.jpg', '/images/hamil3.jpg'],
+        text: `Perut kamu udah makin gede di fase ini. Inget nggak kita jalan-jalan ke Botanica pas kamu masih hamil 4 bulan wkwk.\n\nTerus kita juga banyak pergi-pergi, ke Puncak, makan di Bumi Aki. Hebat emang istri aku, tetep kuat ke mana-mana.`
+    },
+    {
+        title: 'Sagara Garvi Sinatra',
+        date: '13 Januari 2024',
+        icon: '👼',
+        images: ['/images/sagara1.jpg'],
+        text: `"Ibu, Dd takut..." ngomong gitu sambil nangis di motor wkwkw.\n\nSiapa yang sangka dokter cantik tiba-tiba bilang kalau besok paginya jam 6 harus langsung operasi SC. Belum ada persiapan apa-apa dan jujur aja kondisi keuangan aku lagi jelek banget waktu itu. Tapi alhamdulillah, kita bisa berjuang bareng dan ngelewatin itu semua sampai hari ini.`
+    },
+    {
+        title: 'Roller Coaster',
+        date: '',
+        icon: '🎢',
+        images: ['/images/roller1.jpg', '/images/roller2.jpg', '/images/roller3.jpg'], 
+        text: `Kita bener-bener ngerasain yang namanya naik dan turun. Punya duit banyak, sampai kehabisan duit, pusing bareng-bareng.\n\nDi sini aku cuma mau bilang: makasih banyak udah selalu mau nemenin aku ya, sayang. Kamu nggak pernah nyerah nemenin aku dari 0, naik ke 1 juta, terus balik lagi ke minus, sampai sekarang kita pelan-pelan naikin semuanya lagi berdua.`
     }
 ];
 
@@ -53,7 +86,7 @@ window.addEventListener('load', () => {
     createFloatingHearts(); 
 });
 
-/* LOGIKA PASSWORD & OTP (Tetap sama) */
+/* LOGIKA PASSWORD */
 function checkPassword() {
     const value = [...inputs].map(input => input.value).join('');
     if(value.length < PASSWORD.length) return;
@@ -88,17 +121,6 @@ inputs.forEach((input, index) => {
     });
 });
 
-if(inputs.length){
-    inputs[0].addEventListener('paste', (e) => {
-        e.preventDefault();
-        const pasted = e.clipboardData.getData('text').replace(/\D/g, '');
-        pasted.split('').forEach((digit, index) => {
-            if(inputs[index]) inputs[index].value = digit;
-        });
-        if(pasted.length === PASSWORD.length) checkPassword();
-    });
-}
-
 /* CHOICE BUTTONS */
 if(noBtn){
     noBtn.addEventListener('click', () => {
@@ -117,73 +139,118 @@ if(yesBtn){
     yesBtn.addEventListener('click', () => {
         bgMusic.play().catch(e => console.log("Audio autoplay diblokir:", e));
         switchScreen(choiceScreen, storyScreen);
-        renderStory();
+        renderAllStories();
+        startTimer(); // Mulai jalankan timer
     });
 }
 
-/* FUNGSI ANIMASI KONTEN BUKU */
-function animateContent(htmlContent, bindEventsCallback) {
-    // Tambahkan class animasi
-    storyContent.classList.add('content-transition', 'content-hidden');
+/* RENDER STORIES DENGAN TIMER & MULTI GAMBAR */
+function renderAllStories(){
+    let html = `<div class="chapter-container">`;
     
-    // Tunggu animasi menghilang selesai (400ms), lalu ganti konten
-    setTimeout(() => {
-        storyContent.innerHTML = htmlContent;
-        bindEventsCallback(); // Pasang ulang event listener untuk tombol baru
+    // Layar Pertama: Timer Countdown
+    html += `
+        <div class="chapter-wrapper">
+            <div class="card chapter-card">
+                <h2 style="color: #ff5f8f; margin-bottom: 20px;">Halo Kesayanganku ❤️</h2>
+                <p style="color: #666; font-size: 16px; margin-bottom: 10px;">Tau ga sayang, kita udah bareng-bareng selama...</p>
+                
+                <div class="timer-box" id="live-timer">Menghitung waktu...</div>
+                
+                <p style="color: #666; font-size: 16px; margin-bottom: 25px;">Aku mau ajak kamu inget-inget lagi dari awal kita ketemu sampe hari ini.</p>
+                <p style="font-size: 14px; color: #aaa;">(Geser ke atas pelan-pelan ya)</p>
+                <div class="heart bounce" style="margin-top: 15px;">👇</div>
+            </div>
+        </div>
+    `;
+    
+    // Looping semua cerita
+    stories.forEach((story, index) => {
+        // Logika untuk menampilkan gambar (bisa lebih dari satu)
+        let imagesHtml = '';
+        if (story.images && story.images.length > 0) {
+            imagesHtml = `<div class="image-gallery">`;
+            story.images.forEach(imgSrc => {
+                imagesHtml += `<img src="${imgSrc}" class="gallery-img" alt="Kenangan">`;
+            });
+            imagesHtml += `</div>`;
+        }
         
-        // Munculkan kembali perlahan
-        storyContent.classList.remove('content-hidden');
-    }, 400);
-}
+        // Logika untuk tanggal
+        let dateHtml = story.date ? `<p class="story-date">${story.date}</p>` : '';
 
-/* STORY (Sekarang pakai animasi dan kata Chapter) */
-function renderStory(){
-    const story = stories[currentStory];
-    const html = `
-        <div class="heart pulse">❤️</div>
-        <h2 style="color: #ff5f8f; margin-bottom: 10px;">Chapter ${currentStory + 1}</h2>
-        <h1>${story.title}</h1>
-        <p class="story-date">${story.date}</p>
-        <button id="open-memory-btn">Buka Kenangan ❤️</button>
+        html += `
+            <div class="chapter-wrapper reveal">
+                <div class="card chapter-card">
+                    <div class="heart pulse">${story.icon}</div>
+                    <h2 style="color: #ff5f8f; font-size: 18px; margin-bottom: 5px;">Chapter ${index + 1}</h2>
+                    <h1 style="font-size: 24px;">${story.title}</h1>
+                    ${dateHtml}
+                    ${imagesHtml}
+                    <p class="story-text">${story.text}</p>
+                </div>
+            </div>
+        `;
+    });
+
+    // Layar Penutup
+    html += `
+            <div class="chapter-wrapper reveal">
+                <div class="card chapter-card" style="text-align: center;">
+                    <p style="color: #ff5f8f; font-weight: bold; margin-bottom: 15px;">Masih ada pesan terakhir buat kamu...</p>
+                    <button id="finish-scroll-btn">Buka Surat ❤️</button>
+                </div>
+            </div>
+        </div>
     `;
     
-    animateContent(html, () => {
-        document.getElementById('open-memory-btn').addEventListener('click', openMemory);
-    });
-}
+    storyContent.innerHTML = html;
+    setupScrollReveal();
 
-function openMemory(){
-    const story = stories[currentStory];
-    const html = `
-        <img src="${story.image}" class="story-image" alt="${story.title}">
-        <h2 style="color: #ff5f8f; font-size: 18px; margin-bottom: 5px;">❤️ Chapter ${currentStory + 1}</h2>
-        <h1 style="font-size: 24px;">${story.title}</h1>
-        <p class="story-date">${story.date}</p>
-        <p class="story-text">${story.text}</p>
-        <button id="next-story-btn">
-            ${currentStory === stories.length - 1 ? 'Ada Satu Lagi ❤️' : 'Chapter Berikutnya ➜'}
-        </button>
-    `;
-    
-    animateContent(html, () => {
-        document.getElementById('next-story-btn').addEventListener('click', nextStory);
-    });
-}
-
-function nextStory(){
-    currentStory++;
-    if(currentStory >= stories.length){
+    document.getElementById('finish-scroll-btn').addEventListener('click', () => {
         switchScreen(storyScreen, letterScreen);
-        return;
-    }
-    renderStory();
+    });
 }
 
-/* UTILS - Transisi Layar Utama */
+/* FUNGSI PENGHITUNG WAKTU (Dari 16 April 2018) */
+function startTimer() {
+    const startDate = new Date("2018-04-16T00:00:00").getTime();
+    
+    setInterval(() => {
+        const now = new Date().getTime();
+        const diff = now - startDate;
+        
+        const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+        const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        const timerElement = document.getElementById('live-timer');
+        if (timerElement) {
+            timerElement.innerHTML = `${years} Tahun<br>${days} Hari<br>${hours} Jam<br>${minutes} Menit<br>${seconds} Detik`;
+        }
+    }, 1000);
+}
+
+/* FUNGSI SENSOR SCROLL */
+function setupScrollReveal() {
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(reveal => { observer.observe(reveal); });
+}
+
+/* UTILS */
 function switchScreen(hideScreen, showScreen) {
     hideScreen.classList.add('hidden');
     hideScreen.classList.remove('fade-in');
-    
     showScreen.classList.remove('hidden');
     showScreen.classList.add('fade-in');
 }

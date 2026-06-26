@@ -229,3 +229,118 @@ button:hover{
     opacity: 0;
     transform: scale(0.95) translateY(10px);
 }
+
+/* --- ANIMASI SCROLL ALA UNDANGAN --- */
+.chapter-container {
+    padding-bottom: 50px;
+}
+
+.chapter-card {
+    margin-bottom: 40px; /* Jarak antar chapter */
+}
+
+/* Kondisi awal sebelum di-scroll (Tembus pandang & agak ke bawah) */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+/* Kondisi saat masuk layar (Muncul & naik ke posisi asli) */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-indicator {
+    text-align: center;
+    color: #ff5f8f;
+    font-weight: bold;
+    margin-bottom: 30px;
+    animation: bounce 2s infinite;
+}
+
+/* --- UPDATE SCROLL ALA TIKTOK / REELS --- */
+#story-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    background: linear-gradient(135deg, #ffe0e9, #fff5f7);
+    z-index: 20;
+}
+
+#story-content {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.chapter-container {
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory; /* Kunci rahasianya: ini bikin scroll-nya otomatis nge-snap! */
+    scroll-behavior: smooth;
+}
+
+.chapter-wrapper {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: center; /* Akan otomatis 'nyangkut' pas di tengah layar */
+    padding: 20px;
+}
+
+.chapter-card {
+    width: 100%;
+    max-width: 450px;
+    margin: 0; /* Menghilangkan margin agar posisinya pas di tengah */
+}
+
+/* --- GALERI GAMBAR & TIMER --- */
+.image-gallery {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    scroll-snap-type: x mandatory;
+}
+
+.image-gallery::-webkit-scrollbar {
+    height: 6px;
+}
+
+.image-gallery::-webkit-scrollbar-thumb {
+    background: #ffb6c1;
+    border-radius: 10px;
+}
+
+.gallery-img {
+    flex: 0 0 85%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    scroll-snap-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.timer-box {
+    background: #fff3f7;
+    padding: 15px;
+    border-radius: 12px;
+    margin: 15px 0;
+    color: #ff5f8f;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px dashed #ffb6c1;
+}
